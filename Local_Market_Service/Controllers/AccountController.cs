@@ -65,6 +65,7 @@ namespace Local_Market_Service.Controllers
                     };
                     context.Customers.Add(customer);
                     context.SaveChanges();
+                    TempData["Success"] = "Registration successful! You can now login.";
                     return RedirectToAction("Login");
                 }
                 else
@@ -158,6 +159,7 @@ namespace Local_Market_Service.Controllers
             var result = await userManager.ResetPasswordAsync(user, model.Token, model.Password);
             if (result.Succeeded)
             {
+                TempData["Success"] = "Password reset successfully. You can now login.";
                 return RedirectToAction("ResetPasswordConfirmation");
             }
 

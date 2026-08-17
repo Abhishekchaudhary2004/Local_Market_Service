@@ -1,0 +1,60 @@
+@if (TempData["Success"] != null)
+{
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            Swal.fire({
+                toast: true,
+                position: 'top-end',
+                icon: 'success',
+                title: '@TempData["Success"]',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                customClass: {
+                    popup: 'colored-toast'
+                }
+            });
+        });
+    </script>
+}
+@if (TempData["Error"] != null)
+{
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            Swal.fire({
+                toast: true,
+                position: 'top-end',
+                icon: 'error',
+                title: '@TempData["Error"]',
+                showConfirmButton: false,
+                timer: 4000,
+                timerProgressBar: true,
+                customClass: {
+                    popup: 'colored-toast'
+                }
+            });
+        });
+    </script>
+}
+
+<style>
+    .colored-toast.swal2-icon-success {
+        background-color: #a5dc86 !important;
+        color: white;
+    }
+    .colored-toast.swal2-icon-error {
+        background-color: #f27474 !important;
+        color: white;
+    }
+    .colored-toast .swal2-title {
+        color: white;
+    }
+    .colored-toast .swal2-close {
+        color: white;
+    }
+    .colored-toast .swal2-html-container {
+        color: white;
+    }
+</style>

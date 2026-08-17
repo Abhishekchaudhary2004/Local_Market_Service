@@ -36,6 +36,7 @@ namespace Local_Market_Service.Controllers
         {
             var provider = await GetCurrentProviderAsync();
             if (provider == null) return NotFound();
+             if (provider == null) return NotFound();
 
             var bookings = await _context.Booking
                 .Include(b => b.Customer)
@@ -60,6 +61,7 @@ namespace Local_Market_Service.Controllers
         {
             var provider = await GetCurrentProviderAsync();
             if (provider == null) return NotFound();
+             if (provider == null) return NotFound();
             return View(provider);
         }
 
@@ -68,6 +70,7 @@ namespace Local_Market_Service.Controllers
         {
             var provider = await GetCurrentProviderAsync();
             if (provider == null) return NotFound();
+             if (provider == null) return NotFound();
 
             // Update user details
             if (provider.ApplicationUser != null)
@@ -114,6 +117,7 @@ namespace Local_Market_Service.Controllers
         {
             var provider = await GetCurrentProviderAsync();
             if (provider == null) return NotFound();
+             if (provider == null) return NotFound();
             var services = await _context.Services
                 .Include(s => s.Category)
                 .Where(s => s.ProviderId == provider.Id)
@@ -132,6 +136,7 @@ namespace Local_Market_Service.Controllers
         {
             var provider = await GetCurrentProviderAsync();
             if (provider == null) return NotFound();
+             if (provider == null) return NotFound();
 
             model.ProviderId = provider.Id;
             model.CreatedAt = DateTime.Now;
@@ -156,6 +161,7 @@ namespace Local_Market_Service.Controllers
         public async Task<IActionResult> EditService(int id)
         {
             var provider = await GetCurrentProviderAsync();
+            if (provider == null) return NotFound();
             var service = await _context.Services.FirstOrDefaultAsync(s => s.Id == id && s.ProviderId == provider.Id);
             if (service == null) return NotFound();
 
@@ -167,6 +173,7 @@ namespace Local_Market_Service.Controllers
         public async Task<IActionResult> EditService(Service model, IFormFile? ImageFile)
         {
             var provider = await GetCurrentProviderAsync();
+            if (provider == null) return NotFound();
             var service = await _context.Services.FirstOrDefaultAsync(s => s.Id == model.Id && s.ProviderId == provider.Id);
             if (service == null) return NotFound();
 
@@ -200,6 +207,7 @@ namespace Local_Market_Service.Controllers
         public async Task<IActionResult> DeleteService(int id)
         {
             var provider = await GetCurrentProviderAsync();
+            if (provider == null) return NotFound();
             var service = await _context.Services.FirstOrDefaultAsync(s => s.Id == id && s.ProviderId == provider.Id);
             if (service != null)
             {
@@ -219,6 +227,7 @@ namespace Local_Market_Service.Controllers
         {
             var provider = await GetCurrentProviderAsync();
             if (provider == null) return NotFound();
+             if (provider == null) return NotFound();
 
             var bookings = await _context.Booking
                 .Include(b => b.Customer)
@@ -234,6 +243,7 @@ namespace Local_Market_Service.Controllers
         public async Task<IActionResult> AcceptBooking(int id)
         {
             var provider = await GetCurrentProviderAsync();
+            if (provider == null) return NotFound();
             var booking = await _context.Booking.FirstOrDefaultAsync(b => b.Id == id && b.ProviderId == provider.Id);
             if (booking != null)
             {
@@ -246,6 +256,7 @@ namespace Local_Market_Service.Controllers
         public async Task<IActionResult> CompleteBooking(int id)
         {
             var provider = await GetCurrentProviderAsync();
+            if (provider == null) return NotFound();
             var booking = await _context.Booking.FirstOrDefaultAsync(b => b.Id == id && b.ProviderId == provider.Id);
             if (booking != null)
             {
@@ -258,6 +269,7 @@ namespace Local_Market_Service.Controllers
         public async Task<IActionResult> RejectBooking(int id)
         {
             var provider = await GetCurrentProviderAsync();
+            if (provider == null) return NotFound();
             var booking = await _context.Booking.FirstOrDefaultAsync(b => b.Id == id && b.ProviderId == provider.Id);
             if (booking != null)
             {
@@ -272,6 +284,7 @@ namespace Local_Market_Service.Controllers
         {
             var provider = await GetCurrentProviderAsync();
             if (provider == null) return NotFound();
+             if (provider == null) return NotFound();
             
             // Note: Since Review model might not exist, we use Bookings as a placeholder
             // In a real scenario, this would query a Reviews table.
